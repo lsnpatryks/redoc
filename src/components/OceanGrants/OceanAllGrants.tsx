@@ -5,21 +5,21 @@ import { OperationModel } from '../../services';
 import { RightPanelHeader } from '../../common-elements';
 import { l } from '../../services/Labels';
 
-export interface OceanAnyGrantsProps {
+export interface OceanAllGrantsProps {
   operation: OperationModel;
 }
 
 @observer
-export class OceanAnyGrant extends React.Component<OceanAnyGrantsProps> {
+export class OceanAllGrants extends React.Component<OceanAllGrantsProps> {
   render() {
     const { operation } = this.props;
-    const grants = operation.oceanAnyGrant;
+    const grants = operation.oceanAllGrants;
 
     const hasGrants = grants.length > 0;
     return (
       (hasGrants && (
         <div>
-          <RightPanelHeader> {l('oceanAnyGrant')} </RightPanelHeader>
+          <RightPanelHeader> {l('oceanAllGrants')} </RightPanelHeader>
           {grants.map(sample => (
             <div key={sample}>{sample}</div>
           ))}

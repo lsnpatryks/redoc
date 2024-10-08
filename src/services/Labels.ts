@@ -19,8 +19,8 @@ const labels: LabelsConfig = {
   callbackResponses: 'Callback responses',
   requestSamples: 'Request samples',
   responseSamples: 'Response samples',
-  oceanAnyGrant: 'any grant',
-  oceanAllGrants: 'all grants',
+  oceanAnyGrant: 'Any grant required',
+  oceanAllGrants: 'All grants required',
 };
 
 export function setRedocLabels(_labels?: LabelsConfigRaw) {

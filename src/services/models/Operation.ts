@@ -229,6 +229,11 @@ export class OperationModel implements IMenuItem {
   }
 
   @memoize
+  get oceanAllGrants() {
+    return this.operationSpec['x-hasAllGrants'] || [];
+  }
+
+  @memoize
   get parameters() {
     const _parameters = mergeParams(
       this.parser,

@@ -19,6 +19,7 @@ import { ResponseSamples } from '../ResponseSamples/ResponseSamples';
 import { SecurityRequirements } from '../SecurityRequirement/SecurityRequirement';
 import { SECTION_ATTR } from '../../services';
 import { OceanAnyGrant } from '../OceanGrants/OceanAnyGrant';
+import { OceanAllGrants } from '../OceanGrants/OceanAllGrants';
 
 const Description = styled.div`
   margin-bottom: ${({ theme }) => theme.spacing.unit * 6}px;
@@ -68,6 +69,7 @@ export const Operation = observer(({ operation }: OperationProps): JSX.Element =
             <ResponseSamples operation={operation} />
             <CallbackSamples callbacks={operation.callbacks} />
             <OceanAnyGrant operation={operation} />
+            <OceanAllGrants operation={operation} />
           </DarkRightPanel>
         </Row>
       )}
