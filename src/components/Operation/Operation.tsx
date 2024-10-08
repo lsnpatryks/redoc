@@ -65,11 +65,11 @@ export const Operation = observer(({ operation }: OperationProps): JSX.Element =
           </MiddlePanel>
           <DarkRightPanel>
             {!options.pathInMiddlePanel && !isWebhook && <Endpoint operation={operation} />}
+            <OceanAnyGrant operation={operation} />
+            <OceanAllGrants operation={operation} />
             <RequestSamples operation={operation} />
             <ResponseSamples operation={operation} />
             <CallbackSamples callbacks={operation.callbacks} />
-            <OceanAnyGrant operation={operation} />
-            <OceanAllGrants operation={operation} />
           </DarkRightPanel>
         </Row>
       )}
