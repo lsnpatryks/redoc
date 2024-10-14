@@ -51,9 +51,6 @@ export const Operation = observer(({ operation }: OperationProps): JSX.Element =
               <Endpoint operation={operation} inverted={true} />
             )}
 
-            <OceanGrant grants={operation.oceanAnyGrant} label={'oceanAnyGrant'} />
-            <OceanGrant grants={operation.oceanAllGrants} label={'oceanAllGrants'} />
-
             {hasDescription && (
               <Description>
                 {description !== undefined && <Markdown source={description} />}
@@ -62,6 +59,8 @@ export const Operation = observer(({ operation }: OperationProps): JSX.Element =
             )}
             <Extensions extensions={operation.extensions} />
             <SecurityRequirements securities={operation.security} />
+            <OceanGrant grants={operation.oceanAnyGrant} label={'oceanAnyGrant'} />
+            <OceanGrant grants={operation.oceanAllGrants} label={'oceanAllGrants'} />
             <Parameters parameters={operation.parameters} body={operation.requestBody} />
             <ResponsesList responses={operation.responses} />
             <CallbacksList callbacks={operation.callbacks} />
