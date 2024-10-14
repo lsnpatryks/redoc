@@ -18,8 +18,7 @@ import { ResponsesList } from '../Responses/ResponsesList';
 import { ResponseSamples } from '../ResponseSamples/ResponseSamples';
 import { SecurityRequirements } from '../SecurityRequirement/SecurityRequirement';
 import { SECTION_ATTR } from '../../services';
-import { OceanAnyGrant } from '../OceanGrants/OceanAnyGrant';
-import { OceanAllGrants } from '../OceanGrants/OceanAllGrants';
+import { OceanGrant } from '../OceanGrants/OceanGrant';
 
 const Description = styled.div`
   margin-bottom: ${({ theme }) => theme.spacing.unit * 6}px;
@@ -51,6 +50,10 @@ export const Operation = observer(({ operation }: OperationProps): JSX.Element =
             {options.pathInMiddlePanel && !isWebhook && (
               <Endpoint operation={operation} inverted={true} />
             )}
+
+            <OceanGrant grants={operation.oceanAnyGrant} label={'oceanAnyGrant'} />
+            <OceanGrant grants={operation.oceanAllGrants} label={'oceanAllGrants'} />
+
             {hasDescription && (
               <Description>
                 {description !== undefined && <Markdown source={description} />}
@@ -65,8 +68,6 @@ export const Operation = observer(({ operation }: OperationProps): JSX.Element =
           </MiddlePanel>
           <DarkRightPanel>
             {!options.pathInMiddlePanel && !isWebhook && <Endpoint operation={operation} />}
-            <OceanAnyGrant operation={operation} />
-            <OceanAllGrants operation={operation} />
             <RequestSamples operation={operation} />
             <ResponseSamples operation={operation} />
             <CallbackSamples callbacks={operation.callbacks} />
