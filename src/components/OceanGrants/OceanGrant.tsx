@@ -2,12 +2,14 @@ import { observer } from 'mobx-react';
 import * as React from 'react';
 import { LabelsConfig } from '../../services';
 import {
-  AuthHeader,
-  AuthHeaderColumn,
+  GrantHeader,
+  GrantHeaderColumn,
   SecuritiesColumn,
   Wrap,
 } from '../SecurityRequirement/styled.elements';
 import { l } from '../../services/Labels';
+import { StyledMarkdownBlock } from '../Markdown/styled.elements';
+import { ExampleValue } from '../../common-elements/fields';
 
 export interface OceanGrantsProps {
   label: keyof LabelsConfig;
@@ -20,35 +22,17 @@ export class OceanGrant extends React.Component<OceanGrantsProps> {
     const { label, grants } = this.props;
     return (
       (grants.length > 0 && (
-        // <div>
-        //   <H3> {l(label)} </H3>
-        //   <Tabs defaultIndex={0}>
-        //     <TabPanel>
-        //       <div style={style}>
-        //         <code>
-        //           <ul>
-        //             {grants.map(grant => (
-        //               <li key={grant}>{grant}</li>
-        //             ))}
-        //           </ul>
-        //         </code>
-        //       </div>
-        //     </TabPanel>
-        //   </Tabs>
-        // </div>
         <Wrap $expanded={false}>
-          <AuthHeaderColumn>
-            <AuthHeader>{l(label)}</AuthHeader>
-          </AuthHeaderColumn>
+          <GrantHeaderColumn>
+            <GrantHeader>{l(label)}</GrantHeader>
+          </GrantHeaderColumn>
           <SecuritiesColumn>
             <div style={{ wordWrap: 'break-word' }}>
-              <ul style={{ padding: 0, margin: 0 }}>
-                {grants.map(grant => (
-                  <li style={{ fontFamily: 'monospace' }} key={grant}>
-                    {grant}
-                  </li>
-                ))}
-              </ul>
+              {grants.map(grant => (
+                <StyledMarkdownBlock key={grant}>
+                  <ExampleValue>{grant}</ExampleValue>
+                </StyledMarkdownBlock>
+              ))}
             </div>
           </SecuritiesColumn>
         </Wrap>
